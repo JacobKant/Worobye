@@ -12,6 +12,7 @@ services:
       dockerfile: Dockerfile
     ports: 
       - "80:4200"
+    command: "npm run test"
   db:
     image: postgres:latest
     ports:
