@@ -1,17 +1,16 @@
 FROM mhart/alpine-node:8.7.0
 
-COPY package.json /usr/src/server/
-COPY . /usr/src/server
+COPY package.json /usr/src/client/
+COPY . /usr/src/client
 
-WORKDIR /usr/src/server
+WORKDIR /usr/src/client
 RUN npm install
 CMD ["npm", "start"]
 
 ARG APIHOST=http://api.twitter.com
 ENV APIHOST $APIHOST
-ARG PORT=3000
+ARG PORT=4200
 ENV PORT $PORT
 
-VOLUME ["/usr/src/server"]
 
 EXPOSE $PORT 

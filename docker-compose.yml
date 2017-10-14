@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server/src:/usr/src/server/src
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "80:4200"
+    volumes:
+      -  ./client/src:/usr/src/client/src
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
