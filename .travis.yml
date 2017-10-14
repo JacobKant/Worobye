@@ -1,26 +1,28 @@
 sudo: required
 dist: trusty
-
 language: node_js
 node_js:
-  - "8.7.0"
-
+- 8.7.0
 services:
-  - docker
-
-cache: 
+- docker
+cache:
   paths:
-    - node_modules/
-
+  - node_modules/
 before_script:
-  - npm --prefix ./server/client install
-
+- npm --prefix ./server/client install
 before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 script:
-  - npm --prefix ./server/client run test
-  - npm --prefix ./server/client run e2e
-  - npm --prefix ./server/client run build --prod --base-href /
+- npm --prefix ./server/client run test
+- npm --prefix ./server/client run e2e
+- npm --prefix ./server/client run build --prod --base-href /
+deploy:
+  provider: heroku
+  api_key:
+    secure: MsQAUeLaiSOKKr4SDV/1FM3m8keKN2tpe1jwmpuBlWWieRAeeFknMtFAlPlJyABCWxGXa4EZTvOTQfAGcHXwl5XhgSptCMC387WoCInyIdXyur+1ZsI1IU/5psGdJ/jrPvnuoQupT6lEBcnIyVqlWqAKIt6JuK4tEXNa1a09mS707Ndw2g/88klZBbJZaEMcWc04+cMDF55q9Wcy+Bu2IVMw1HQy48HbGRt9TUjBEGexjuSPPvEqwYhWDLBvATl1DfauJuGjINEEdBn1DppGlZgcn6VHEjsJguoNl+X1JSKEmeH0TgWjrKNS1OGHabwRarnO/17wpk9HXNCUgsL/UuRqmQ+QXSYEG7YcED1XwWD3olmjyYO3ioYqF6RdxB7ULUGKZr/ajJLyrjsrSQ6gG46ndNrRPt+hE1J3g8K0TybSO7F/lYnnzc6C4MZVpwPfcK1+5HGb8QTcXIYDTsSDVGgjYbV6XLHFvv4Okhnn4OH1TGFY+0xYNu4uBjwxbeyaXK9OUXvjoS3Xt2TREG5xmBf/Q6fzfgNegrATBWHCyzEQyWYohG0wV0LlGxqsZIKUmyAw5rv4HAg8ZLLW7X0uTKLCRxZ3PLw19/cTmdf7wNbrBjl6ATClQ0iX6zXmf+DG7fnSrmaAUv0nJRMxCrp9QO6tonCxqKJWXEjGEJmRXcs=
+  app: Worobye
+  on:
+    repo: gtkmvtyb/Worobye
+    branch: config_env
