@@ -10,12 +10,12 @@ services:
       - ./server/src:/usr/src/server/src
   client:
     build:
-      context: ./client
+      context: ./server/client
       dockerfile: Dockerfile.dev
     ports: 
       - "80:4200"
     volumes:
-      -  ./client/src:/usr/src/client/src
+      -  ./server/client/src:/usr/src/client/src
   db:
     image: postgres:latest
     ports:
