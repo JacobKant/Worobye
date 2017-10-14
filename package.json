@@ -1,5 +1,5 @@
 {
     "scripts": {
-      "test": "npm run test ./client/"
+      "test": "npm -prefix ./client test"
     }
 }
