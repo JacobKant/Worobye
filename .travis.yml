@@ -2,34 +2,27 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - "8.7.0"
-
-# services:
-  # - docker
-
-cache: 
+- 8.7.0
+cache:
   paths:
-    - ./server/node_modules/
-    - ./server/client/node_modules/
-
+  - "./server/node_modules/"
+  - "./server/client/node_modules/"
 before_script:
-  - npm --prefix ./server install
-  - npm --prefix ./server/client install
-
+- npm --prefix ./server install
+- npm --prefix ./server/client install
 before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 script:
-  - npm --prefix ./server/client run test
-  - npm --prefix ./server/client run e2e
-  - npm --prefix ./server/client run build --prod --base-href /
-
+- npm --prefix ./server/client run test
+- npm --prefix ./server/client run e2e
+- npm --prefix ./server/client run build --prod --base-href /
 deploy:
   provider: heroku
   api_key:
-    secure: MsQAUeLaiSOKKr4SDV/1FM3m8keKN2tpe1jwmpuBlWWieRAeeFknMtFAlPlJyABCWxGXa4EZTvOTQfAGcHXwl5XhgSptCMC387WoCInyIdXyur+1ZsI1IU/5psGdJ/jrPvnuoQupT6lEBcnIyVqlWqAKIt6JuK4tEXNa1a09mS707Ndw2g/88klZBbJZaEMcWc04+cMDF55q9Wcy+Bu2IVMw1HQy48HbGRt9TUjBEGexjuSPPvEqwYhWDLBvATl1DfauJuGjINEEdBn1DppGlZgcn6VHEjsJguoNl+X1JSKEmeH0TgWjrKNS1OGHabwRarnO/17wpk9HXNCUgsL/UuRqmQ+QXSYEG7YcED1XwWD3olmjyYO3ioYqF6RdxB7ULUGKZr/ajJLyrjsrSQ6gG46ndNrRPt+hE1J3g8K0TybSO7F/lYnnzc6C4MZVpwPfcK1+5HGb8QTcXIYDTsSDVGgjYbV6XLHFvv4Okhnn4OH1TGFY+0xYNu4uBjwxbeyaXK9OUXvjoS3Xt2TREG5xmBf/Q6fzfgNegrATBWHCyzEQyWYohG0wV0LlGxqsZIKUmyAw5rv4HAg8ZLLW7X0uTKLCRxZ3PLw19/cTmdf7wNbrBjl6ATClQ0iX6zXmf+DG7fnSrmaAUv0nJRMxCrp9QO6tonCxqKJWXEjGEJmRXcs=
-  app: Worobye
+    secure: RwZ7biGO015CcX4PAvIYoVCptTWlIAusj0yappis1y6yDCTO1dhYRGexsM8TMte38oMZQY5aYepT9rCQJeC3+ycLFikvB94ckOJSwH8MmxrO3uJxa+kwaqxGhEVD056vlRXSS8ZZzUbA9ajjCDqalhG0glRNh9Oa4FF26+24x41jKNpI8qy14OagoD1zKWSEkuaG9n9bdFAxGJ9QX0SU+QPieBkpVgH9GYoSxz8+dKEvxrSDngkKbUSvvUQBcQO43qvfNaiFSW8s7/qS7qCsSA35LgQ0ML97sSsrAjzG0wb6l/wl5wTgXbt3/mV87u+PhpSPFM6AI6rYS4LDdxsJK6UcMc7vQ6503XyGZ1M1SOp9gS2EJQdVjUKp3PzK3vA6b+6pqQA7KA7Y9Byd57RpNq3KncDRAjPh+WK0CDb7S8ypyKv4J9GFnplISQDB5UEuL5TVtAu8ubKE2HHu7YyXsJ4c8QwnvS4aqLsCtwws4FcK9XCIM1sh894R2t+Qqd87j2EOKO7eETh66GM9lAZcWKHNXnwiuqluSsZwCLRdG+lgODmhhHZMxegB05p1ECHV9DihEcvCSQgo/VNSBZHns3Tg7NwCZR59enk5gU/sY9TGXLnqsbwvtfkIj3gdlJX9QnpFgljscwap2twE45wECvGBiCnSKl2ZwDjhBCwvEHg=
+  app: worobye
   on:
     repo: gtkmvtyb/Worobye
-    branch: config_env
+  run: "npm --prefix ./server/client start"
