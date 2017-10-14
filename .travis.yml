@@ -32,6 +32,6 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 script:
-  - npm --prefix ./client run ng test --single-run=true --watch=false
-  - npm --prefix ./client run ng e2e --single-run=true --watch=false
+  - npm --prefix ./client run ng test --single-run
+  - npm --prefix ./client run ng e2e --single-run
   - npm --prefix ./client run build --prod --base-href /
