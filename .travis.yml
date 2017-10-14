@@ -6,3 +6,4 @@ cache:
     - node_modules/
 before_script:
   - npm install -g @angular/cli
+  - npm --prefix ./client install
