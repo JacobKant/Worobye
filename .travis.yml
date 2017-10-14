@@ -9,7 +9,7 @@ services:
 
 cache: 
   paths:
-    - "node_modules/"
+    - node_modules/
 
 addons:
   apt:
