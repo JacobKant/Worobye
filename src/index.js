@@ -1,4 +1,5 @@
 const Koa = require("koa");
+const static = require("koa-static");
 const router = require("koa-router")();
 const app = new Koa();
 
@@ -16,9 +17,7 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}`);
 });
 
-app.use(async ctx => {
-  ctx.body = "Hello World1111";
-});
+app.use(static('client/dist'));
 
 let port = process.env.PORT || 3000;
 app.listen(port);

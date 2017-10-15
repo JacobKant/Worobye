@@ -25,4 +25,4 @@ deploy:
   app: worobye
   on:
     repo: gtkmvtyb/Worobye
-  run: "npm --prefix ./server/client start"
+  run: "npm start"
