@@ -5,19 +5,19 @@ node_js:
 - 8.7.0
 cache:
   paths:
-  - "./server/node_modules"
-  - "./server/client/node_modules"
+  - "./node_modules"
+  - "./client/node_modules"
 before_script:
-- npm --prefix ./server install
-- npm --prefix ./server/client install
+- npm install
+- npm --prefix ./client install
 before_install:
 - export CHROME_BIN=chromium-browser
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 script:
-- npm --prefix ./server/client run test
-- npm --prefix ./server/client run e2e
-- npm --prefix ./server/client run build --prod --base-href /
+- npm --prefix ./client run test
+- npm --prefix ./client run e2e
+- npm --prefix ./client run build --prod --base-href /
 deploy:
   provider: heroku
   api_key:
