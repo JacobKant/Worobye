@@ -10,6 +10,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "8.7.0"
+  },
   "dependencies": {
     "knex": "^0.13.0",
     "koa": "^2.3.0",
