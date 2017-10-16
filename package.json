@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/index.js",
     "dev": "node ./src/index.js",
-    "deploy": "npm install && npm --prefix ./client install && npm --prefix ./client run build && npm start"
+    "heroku-prebuild": "cd ./client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
