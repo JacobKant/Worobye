@@ -1,19 +1,19 @@
-class Tweet {
-    constructor(message, date, images) {
-        Object.defineProperties(this, [message, date, imags]);
+module.exports = class Tweet {
+    constructor(message, date, image) {
+        this.message = message;
+        this.date = date;
+        this.image = image;
     }
 
-    static creteTweetFromTweetter(tweeterTweet) {
-        let simpleTweets = tweetsArray.map(tweet => {
-            return {
-              text: tweet.text,
-              date: new Date(tweet.created_at),
-              images: tweet.entities.media.map(media => {
-                return {
-                  src: media.media_url
-                }
-              })
-            }
-        })
+    static creteTweetFromTweetter(tweet) {
+        let image;
+        if (tweet.entities.media) {
+            image = tweet.entities.media.find(media => media.media_url).media_url;
+        }      
+        return new Tweet(
+            tweet.text,
+            new Date(tweet.created_at),
+            image
+        );
     }
 }

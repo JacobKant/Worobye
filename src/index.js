@@ -1,6 +1,6 @@
 const Koa = require("koa");
 const static = require("koa-static");
-const router = require("koa-router")();
+const mainRouter = require('./routes');
 const request = require('koa2-request');
 const app = new Koa();
 
@@ -27,26 +27,9 @@ app.use(async (ctx, next)=>{
   await next();
 });
 
-router.get('/tweets', async (ctx, next) => {
-  let result = await request('https://api.twitter.com/1.1/search/tweets.json?q=marvel', {
-    headers: {
-      'Authorization': 'Bearer '+ctx.apiToken
-    }
-  });
-  console.log(result);
-  ctx.body = result.body;
-  console.log(ctx.body);
-  await next();
-});
-
-// router.post('/folder', function(ctx, next){
-//   // add to favorite function
-//   await next();
-// });
-
 app
-.use(router.routes())
-.use(router.allowedMethods());
+.use(mainRouter.routes())
+.use(mainRouter.allowedMethods());
 
 app.use(static('client/dist'));
 
