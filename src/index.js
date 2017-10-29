@@ -1,7 +1,9 @@
+require('dotenv').config()
 const Koa = require("koa");
 const static = require("koa-static");
 const mainRouter = require('./routes');
 const request = require('koa2-request');
+const bodyParser = require('koa-bodyparser');
 const app = new Koa();
 
 app.use(async (ctx, next) => {
@@ -28,6 +30,7 @@ app.use(async (ctx, next)=>{
 });
 
 app
+.use(bodyParser())
 .use(mainRouter.routes())
 .use(mainRouter.allowedMethods());
 

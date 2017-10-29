@@ -16,11 +16,14 @@ router
     ctx.body = newTweets;
     await next();
   })
-  .post('/api/tweets', async (ctx, next) => {
-    await next();
-  })
   .get('/api/folder', async (ctx, next) => {
-    
+    ctx.body = await sequelize.UsTweet.findAll();
+  })
+  .post('/api/tweets', async (ctx, next) => {
+    console.log(ctx.request.body);
+    await sequelize.UsTweet.create(ctx.request.body)
+    ctx.response.status = 201
+    ctx.body = "ok"
   })
 
 module.exports = router

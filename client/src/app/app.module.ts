@@ -1,26 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
 
-import { AppComponent } from './app.component';
-import { WorobyeApi } from './WorobyeApi';
-import { TweetRepository } from './TweetRepository';
-import { TweetsService } from './TweetsService';
-import { TweetComponent } from './tweet/tweet.component';
-import { TweetListComponent } from './tweet-list/tweet-list.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AppComponent } from "./app.component";
+import { WorobyeApi } from "./WorobyeApi";
+import { TweetRepository } from "./TweetRepository";
+import { TweetsService } from "./TweetsService";
+import { TweetComponent } from "./tweet/tweet.component";
+import { TweetListComponent } from "./tweet-list/tweet-list.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MatButtonModule,
   MatIconModule,
-  MatListModule,
-  MatCardModule
+  MatCardModule,
+  MatToolbarModule
 } from "@angular/material";
+import { AppRoutingModule } from "./app-routing.module";
+import { FolderComponent } from "./folder/folder.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     TweetComponent,
-    TweetListComponent
+    TweetListComponent,
+    FolderComponent
   ],
   imports: [
     BrowserModule,
@@ -28,14 +31,11 @@ import {
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    AppRoutingModule
   ],
-  providers: [
-    WorobyeApi,
-    TweetRepository,
-    TweetsService
-  ],
+  providers: [WorobyeApi, TweetRepository, TweetsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

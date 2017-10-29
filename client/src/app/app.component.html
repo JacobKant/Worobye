@@ -1,3 +1,14 @@
-<div style="text-align:center">
-  <tweet-list></tweet-list>
-</div>
+<mat-toolbar color="primary">
+  <nav>
+    <span routerLink="/tweets" routerLinkActive="active">
+      <button mat-button>Worobye</button>
+    </span>
+    <span routerLink="/infolder" routerLinkActive="active">
+      <button mat-button>Folder</button>
+    </span>
+  </nav>
+</mat-toolbar>
+
+<section>
+  <router-outlet></router-outlet>
+</section>
