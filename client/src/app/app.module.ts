@@ -17,6 +17,8 @@ import {
 } from "@angular/material";
 import { AppRoutingModule } from "./app-routing.module";
 import { FolderComponent } from "./folder/folder.component";
+import { RouterModule } from "@angular/router";
+import { APP_BASE_HREF } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { FolderComponent } from "./folder/folder.component";
     MatToolbarModule,
     AppRoutingModule
   ],
-  providers: [WorobyeApi, TweetRepository, TweetsService],
+  providers: [WorobyeApi, TweetRepository, TweetsService,  { provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

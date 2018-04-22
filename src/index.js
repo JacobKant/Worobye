@@ -4,6 +4,7 @@ const static = require("koa-static");
 const mainRouter = require('./routes');
 const request = require('koa2-request');
 const bodyParser = require('koa-bodyparser');
+const LoginTwitterInterceptor = require('./login-interceptor');
 const app = new Koa();
 
 app.use(async (ctx, next) => {
@@ -14,25 +15,13 @@ app.use(async (ctx, next) => {
   ctx.set("X-Response-Time", `${ms}ms`);
 });
 
-app.use(async (ctx, next)=>{
-  let result = await request('https://api.twitter.com/oauth2/token', {
-    method: 'post',
-    headers: {
-        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
-        'Authorization': 'Basic aGt1VWNxOThBT3h4VFg5WEk5clU4cVBOdzpSdFAxSnBnVnVlcldoQWJLRm8yMnVFZzRzdWJPZmRYcXY4cHI3UmJsQmlydDNLRU14Yg=='
-    },
-    json: true,
-    body: 'grant_type=client_credentials'
-  });
-  ctx.apiToken = result.body.access_token;
-  console.log('SetNewTokenTwitter ', ctx.apiToken);
-  await next();
-});
+// Логиним сервер в твиттере, получаем токен, прокидываем его в контекст
+app.use(LoginTwitterInterceptor);
 
-app
-.use(bodyParser())
-.use(mainRouter.routes())
-.use(mainRouter.allowedMethods());
+
+app.use(bodyParser())
+app.use(mainRouter.routes())
+app.use(mainRouter.allowedMethods());
 
 app.use(static('client/dist'));
 

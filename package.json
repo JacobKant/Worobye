@@ -2,12 +2,13 @@
   "name": "worobay-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ava",
     "start": "node ./src/index.js",
     "dev": "node ./src/index.js",
-    "heroku-prebuild": "cd ./client && npm install && npm install --only=dev && npm run build"
+    "heroku-prebuild": "cd ./client && npm install && npm install --only=dev && npm run build",
+    "seq": "./node_modules/.bin/sequelize"
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +16,8 @@
     "node": "8.7.0"
   },
   "dependencies": {
-    "dotenv": "^4.0.0",
-    "knex": "^0.13.0",
+    "dotenv": "^5.0.1",
+    "knex": "^0.14.6",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-request": "^1.0.0",
@@ -29,6 +30,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "sequelize-cli": "^3.0.0"
+    "ava": "0.25.0",
+    "sequelize-cli": "^4.0.0"
   }
 }
