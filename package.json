@@ -5,9 +5,10 @@
   "main": "src/index.js",
   "scripts": {
     "test": "ava",
-    "start": "node ./src/index.js",
-    "dev": "node ./src/index.js",
-    "heroku-prebuild": "cd ./client && npm install && npm install --only=dev && npm run build",
+    "build": "tsc",
+    "start": "node ./build/index.js",
+    "dev": "tsc && node ./build/index.js",
+    "heroku-prebuild": "tsc && cd ./client && npm install && npm run build",
     "seq": "./node_modules/.bin/sequelize"
   },
   "author": "",
@@ -30,7 +31,14 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
+    "@types/koa": "^2.0.45",
+    "@types/koa-bodyparser": "^4.2.0",
+    "@types/koa-router": "^7.0.27",
+    "@types/koa-static": "^4.0.0",
+    "@types/sequelize": "^4.27.14",
     "ava": "0.25.0",
-    "sequelize-cli": "^4.0.0"
+    "sequelize-cli": "^4.0.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3"
   }
 }

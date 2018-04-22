@@ -11,7 +11,7 @@ const LoginTwitterInterceptor = async (ctx, next) => {
 
   try {
     await next();
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     await doLogin(ctx);
     await next();
@@ -31,6 +31,6 @@ const doLogin = async (ctx) => {
   ctx.apiToken = result.body.access_token;
   apiToken = result.body.access_token;
   console.log('SetNewTokenTwitter ', ctx.apiToken);
-}
+};
 
 module.exports = LoginTwitterInterceptor;

@@ -1,0 +1,22 @@
+require('dotenv').config();
+import * as Koa from 'Koa';
+import * as koaStatic from 'koa-static';
+const mainRouter = require('./routes');
+const request = require('koa2-request');
+const bodyParser = require('koa-bodyparser');
+const LoginTwitterInterceptor = require('./login-interceptor');
+const app = new Koa();
+app.use(async (ctx, next) => {
+    const start = Date.now();
+    await next();
+    const ms = Date.now() - start;
+    console.log(`${ctx.method} ${ctx.url} - ${ms}`);
+    ctx.set('X-Response-Time', `${ms}ms`);
+});
+app.use(LoginTwitterInterceptor);
+app.use(bodyParser());
+app.use(mainRouter.routes());
+app.use(mainRouter.allowedMethods());
+app.use(koaStatic('client/dist'));
+const port = process.env.PORT || 3000;
+app.listen(port);
