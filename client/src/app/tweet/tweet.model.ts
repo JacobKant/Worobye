@@ -3,5 +3,5 @@ export class Tweet {
     public message: string,
     public date: Date,
     public image: string
-  ){}
+  ) { }
 }

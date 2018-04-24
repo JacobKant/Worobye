@@ -1,7 +1,7 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TweetListComponent } from "./tweet-list/tweet-list.component";
-import { FolderComponent } from "./folder/folder.component";
+import { TweetListComponent } from './tweet-list/tweet-list.component';
+import { FolderComponent } from './folder/folder.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/tweets', pathMatch: 'full' },
@@ -10,7 +10,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

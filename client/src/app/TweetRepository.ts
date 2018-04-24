@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { WorobyeApi } from "./WorobyeApi";
-import { Tweet } from "./tweet/tweet.model";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { WorobyeApi } from './WorobyeApi';
+import { Tweet } from './tweet/tweet.model';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TweetRepository {
-  constructor(private worobyeApi: WorobyeApi) {}
+  constructor(private worobyeApi: WorobyeApi) { }
 
   getTweets(): Observable<any> {
     return this.worobyeApi.getTweets();
@@ -17,6 +17,6 @@ export class TweetRepository {
 
   postTweet(tweet: Tweet) {
     this.worobyeApi.postTweet(tweet)
-    .subscribe((resp) => {console.log(resp)}, (err) => console.error(err));
+      .subscribe((resp) => { console.log(resp); }, (err) => console.error(err));
   }
 }

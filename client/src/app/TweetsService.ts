@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { TweetRepository } from "./TweetRepository";
-import { Tweet } from "./tweet/tweet.model";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { TweetRepository } from './TweetRepository';
+import { Tweet } from './tweet/tweet.model';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TweetsService {
