@@ -1,14 +1,6 @@
-<mat-toolbar color="primary">
-  <nav>
-    <span routerLink="/tweets" routerLinkActive="active">
-      <button mat-button>Worobye</button>
-    </span>
-    <span routerLink="/infolder" routerLinkActive="active">
-      <button mat-button>Folder</button>
-    </span>
-  </nav>
-</mat-toolbar>
-
-<section>
-  <router-outlet></router-outlet>
-</section>
+<div style="text-align:center">
+  <h1>
+    <app-landing></app-landing>
+    {{title}} Welcome to {{ title }}!
+  </h1>
+</div>
